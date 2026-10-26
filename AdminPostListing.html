@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create a listing — Benta Q, See U</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="admin-inventory.css" />
+  <script src="listings.js" defer></script>
+  <script src="admin.js" defer></script>
+  <script src="admin-db.js" defer></script>
+  <script src="AdminPostListing.js" defer></script>
+</head>
+
+<body>
+  <main class="post-shell">
+    <header class="post-header">
+      <a href="AdminDashboard.html" class="post-back">← Back to inventory</a>
+      <h1 id="post-heading">Create a listing</h1>
+      <p class="post-sub">Fill in the fields below. This is exactly what will appear on the marketplace.</p>
+    </header>
+
+    <form class="post-grid" id="post-form" novalidate>
+      <div class="post-error" id="post-error" hidden role="alert"></div>
+      <div class="post-form-col">
+        <div class="post-section">
+          <h2>Product information</h2>
+          <label class="post-field">
+            <span>Product name</span>
+            <input type="text" id="f-name" required maxlength="80" placeholder="e.g. Classic Denim Jacket" />
+          </label>
+          <div class="post-row">
+            <label class="post-field">
+              <span>Category</span>
+              <input type="text" id="f-category" required list="category-list" placeholder="Fashion" />
+              <datalist id="category-list">
+                <option>Fashion</option><option>Electronics</option><option>Home</option>
+                <option>Accessories</option><option>Books</option><option>Others</option>
+              </datalist>
+            </label>
+            <label class="post-field">
+              <span>Condition</span>
+              <input type="text" id="f-condition" required list="condition-list" placeholder="Like New" />
+              <datalist id="condition-list">
+                <option>Brand New</option><option>Like New</option>
+                <option>Good</option><option>Fair</option>
+              </datalist>
+            </label>
+          </div>
+          <div class="post-row">
+            <label class="post-field">
+              <span>Price (PHP)</span>
+              <input type="number" id="f-price" required min="0" step="1" placeholder="1299" />
+            </label>
+            <label class="post-field">
+              <span>Badge</span>
+              <input type="text" id="f-badge" list="badge-list" placeholder="New" />
+              <datalist id="badge-list">
+                <option>New</option><option>Best Seller</option>
+                <option>Popular</option><option>Limited</option>
+              </datalist>
+            </label>
+          </div>
+          <label class="post-field">
+            <span>Description</span>
+            <textarea id="f-description" rows="6" required maxlength="2000"
+              placeholder="Talk about condition, why you're selling, etc."></textarea>
+          </label>
+          <label class="post-field">
+            <span>Tags (comma-separated)</span>
+            <input type="text" id="f-tags" placeholder="denim, jacket, outerwear" />
+          </label>
+        </div>
+
+        <div class="post-section">
+          <h2>Seller</h2>
+          <div class="post-row">
+            <label class="post-field">
+              <span>Seller name</span>
+              <input type="text" id="f-seller-name" required placeholder="Mika Reyes" />
+            </label>
+            <label class="post-field">
+              <span>Section / handle</span>
+              <input type="text" id="f-seller-handle" placeholder="BSIT 3-A" />
+            </label>
+          </div>
+          <div class="post-row">
+            <label class="post-field">
+              <span>Campus</span>
+              <select id="f-seller-campus" required>
+                <option value="">Select campus</option>
+                <option>San Bartolome</option>
+                <option>San Francisco</option>
+                <option>Batasan</option>
+              </select>
+            </label>
+            <label class="post-field">
+              <span>Avatar URL (optional)</span>
+              <input type="url" id="f-seller-avatar" placeholder="https://…" />
+            </label>
+          </div>
+        </div>
+
+        <div class="post-section">
+          <h2>Images <span class="post-section-hint">at least 1</span></h2>
+          <div class="post-images" id="image-fields"></div>
+          <button type="button" class="inv-ghost-btn" id="add-image-btn">+ Add image slot</button>
+        </div>
+
+        <div class="post-section">
+          <h2>Facebook post</h2>
+          <label class="post-field">
+            <span>Post URL</span>
+            <input type="url" id="f-postUrl" placeholder="https://www.facebook.com/groups/…" />
+          </label>
+          <label class="post-field">
+            <span>Date posted</span>
+            <input type="date" id="f-date" />
+          </label>
+        </div>
+      </div>
+
+      <aside class="post-preview-col">
+        <div class="post-preview-sticky">
+          <h2 class="post-preview-title">Live preview</h2>
+          <div id="post-preview"></div>
+          <div class="post-form-actions">
+            <a href="AdminDashboard.html" class="inv-ghost-btn">Cancel</a>
+            <button type="submit" class="inv-primary-btn" id="save-btn">Save listing</button>
+          </div>
+        </div>
+      </aside>
+    </form>
+  </main>
+</body>
+
+</html>
