@@ -1,0 +1,70 @@
+/* =========================================================
+   BENTA Q, SEE U — BUTTONS
+   Sticker-style pill buttons with a hard offset shadow.
+   Matches the hand-drawn outline feel of the brand logo.
+   ========================================================= */
+
+.btn-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  min-width: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-pill .btn-icon {
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.btn-pill .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Soft press-in on hover — no flashing colors */
+.btn-pill:hover {
+  background: var(--pink-soft);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn-pill:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn-pill:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+/* Active-filter indicator */
+.btn-pill.has-filters::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: 2px solid #fff;
+  z-index: 2;
+}
